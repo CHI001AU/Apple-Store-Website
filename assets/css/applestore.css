@@ -1,0 +1,573 @@
+/* =========================================================
+   Teddy Bear Workshop Store
+   assets/css/teddybears.css
+   ========================================================= */
+
+/* ---------- Base Reset ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    background: #f8f4f4;
+    /* floral white / warm cream */
+    color: #111827;
+    line-height: 1.5;
+}
+
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ---------- Banner ---------- */
+.banner {
+    background: #eeecec;
+    /* saddle brown */
+    color: #000000;
+    padding: 14px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.banner-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    height: 1.8rem;
+    /* makes image same size as the text */
+    width: auto;
+    /* keeps image proportions */
+    vertical-align: middle;
+}
+
+/* ---------- Site Header ---------- */
+.site-header {
+    background: #ffffff;
+    /* bear brown */
+    color: #000000;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.site-header h2 {
+    font-size: 1.5rem;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+/* ---------- Navigation Bar ---------- */
+.navbar {
+    margin-top: 10px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    padding: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ffccbc;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #000000;
+}
+
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    /*padding: 16px; */
+    font-size: 16px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    /* display: none; */
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0;
+    transform: translate(-10px);
+    transition: opacity 0.3s ease, trandform 0.3s ease, visibility 0.3s linear 0.1s;
+    visibility: hidden;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #e0e0e0;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content a {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+/* .dropdown:hover .dropbtn {
+    background-color: #ffffff;
+} */
+
+/* ---------- Product Grid ---------- */
+.product-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    margin-bottom: 30px;
+}
+
+.product-grid-detail {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    margin-bottom: 30px;
+}
+
+/* ---------- Product Card ---------- */
+.product-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ================================
+   Poster Image
+   ================================ */
+
+.product-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    background-color: #ddd;
+    /* fallback background */
+
+}
+
+/* ---------- Product Body ---------- */
+.product-body {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.product-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.product-desc {
+    font-size: 0.95rem;
+    color: #4b5563;
+    flex: 1;
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.product-id {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.trailer-link {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #d84315;
+}
+
+.trailer-link:hover {
+    text-decoration: underline;
+}
+
+/* Session Info */
+/* Style the custom <sessions> tag */
+sessions {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #333;
+    background-color: #f3f4f6;
+}
+
+sessions2 {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #333;
+    background-color: #f3f4f6;
+}
+
+/* Four equal columns */
+.sessions-heading,
+.session-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 0.7fr 0.6fr;
+    align-items: center;
+    padding: 3px 0;
+}
+
+.sessions-heading {
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 6px;
+}
+
+.session-row {
+    border-bottom: 1px dotted #eee;
+}
+
+/* Book icon */
+.book-btn {
+    text-align: center;
+}
+
+.book-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.book-icon2 {
+    width: 36px;
+    height: 36px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.book-icon:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    padding: 14px 0;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    color: #000000;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 420px) {
+    .image-placeholder {
+        height: 120px;
+    }
+
+    .product-body {
+        padding: 10px;
+    }
+
+    .banner-title {
+        font-size: 1.4rem;
+    }
+}
+
+/* ================================
+   Trailer Modal
+   ================================ */
+
+.modal {
+    display: none;
+    /* hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #000;
+    margin: auto;
+    padding: 0;
+    border-radius: 8;
+    max-width: 800px;
+    width: 90%;
+    position: relative;
+}
+
+.close {
+    color: #fff;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close:hover {
+    color: #ccc;
+}
+
+.modal {
+    transition: opacity 0.2s ease;
+}
+
+/* ================================
+   Location Filter Buttons
+   ================================ */
+.location-filter-container {
+    text-align: center;
+    /* Center the container */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.location-filters {
+    margin-bottom: 20px;
+    text-align: center;
+    /* Center the buttons */
+}
+
+.location-filter {
+    display: inline-block;
+    margin: 0 8px 8px 0;
+}
+
+.filter-btn {
+    text-decoration: none;
+    background-color: #8d6e63;
+    /* Soft brown */
+    color: #ffffff;
+    /* White text */
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin-right: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: #5d4037;
+    /* Darker brown on hover/active */
+}
+
+.filter-btn.active {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/*=====================================
+    Video
+    ===================================*/
+.hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    /* adjust as needed */
+    overflow: hidden;
+    border-radius: 20px;
+    /* rounded corners */
+    overflow: hidden;
+    /* keeps video inside the rounded edges */
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.iphone-hero {
+    position: relative;
+    width: 100%;
+    max-height: 600px;
+    height: auto;
+    /* adjust as needed */
+    overflow: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.iphone-video {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+
+/* TEXT ON TOP OF VIDEO */
+
+
+/* TEXT OVERLAY */
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: 'SF pro', S;
+}
+
+.apple-watch-se {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: 'SF pro', S;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+/* PRODUCTS SECTION */
+.product-section {
+    padding: 60px 10%;
+    background: #ffffff;
+    margin-top: 50px;
+}
+
+.product-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+/* PRODUCT GRID */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    padding: 20px;
+}
+
+.product-poster {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.product-desc {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.product-price {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+/* Sound box/image holder*/
+.sound-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+
+/* ================================
+   End of Teddy Bear CSS
+   ================================ */
