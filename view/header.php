@@ -40,6 +40,7 @@
                         <div class="dropdown-content">
                             <a href="index.php?page=iphone17">Iphone 17</a>    
                             <a href="index.php?page=applewatchse">Apple Watch Se 3</a>
+                            <a href="index.php?page=iphone17pro">Iphone 17 Pro</a>
                         </div>
                     </div>
                     <li><a href="index.php?page=iphones"     class="nav-link active">Iphones</a></li>

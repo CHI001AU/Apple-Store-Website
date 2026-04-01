@@ -48,6 +48,12 @@ switch ($page) {
     $controller->displayIphone17();
     break;
 
+    case 'iphone17pro':
+    require_once __DIR__ . '/controller/Iphone17proController.php';
+    $controller = new Iphone17proController();
+    $controller->displayIphone17pro();
+    break;
+
 
     default:
         http_response_code(404);
