@@ -36,17 +36,30 @@
                 <ul class="nav-list">
                     <li><a href="index.php?page=home"             class="nav-link active">Home</a></li>
                         <div class="dropdown">
-                        <button class="dropbtn">Products</button>
+                        <button class="dropbtn">Iphone</button>
                         <div class="dropdown-content">
                             <a href="index.php?page=iphone17">Iphone 17</a>    
-                            <a href="index.php?page=applewatchse">Apple Watch Se 3</a>
                             <a href="index.php?page=iphone17pro">Iphone 17 Pro</a>
                         </div>
                     </div>
-                    <li><a href="index.php?page=iphones"     class="nav-link active">Iphones</a></li>
-                    <li><a href="index.php?page=applewatch"     class="nav-link active">Apple Watch</a></li>
+                        <div class="dropdown">
+                        <button class="dropbtn">Apple Watch</button>
+                        <div class="dropdown-content">
+                            <a href="index.php?page=applewatchse">Se 3</a>
+                            <a href="index.php?page=applewatch11">Series 11</a>
+                            <a href="index.php?page=applewatchse">Ultra 3</a>
+                        </div>  
+                    </div>
+                       <div class="dropdown">
+                        <button class="dropbtn">Macbook</button>
+                        <div class="dropdown-content">
+                            <a href="index.php?page=macbookneo">Macbook Neo</a>
+                            <a href="index.php?page=macbookair">Macbook Air</a>
+                            <a href="index.php?page=macbookpro">Macbook Pro</a>
+                        </div>  
+                    </div>     
                     <li><a href="index.php?page=accessories"     class="nav-link active">Accessories</a></li>
-                    <li><a href="index.php?page=macbook"     class="nav-link active">Macbook</a></li>
+                     
                 </ul>
             </nav>
         </div>

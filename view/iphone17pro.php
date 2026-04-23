@@ -6,6 +6,7 @@ include __DIR__ . '/../view/header.php';
 <!-- Colors for the iphone 17 pro page  -->
 <body style="background-color: Black;">
 <body class="iphone-17-pro">
+
 <!-- Welcome image -->
  <section class="hero-media" >
     <img src="assets/img/iphone17prowelcome.png" alt="iPhone 17 Details" class="hero-media"> 
@@ -13,10 +14,11 @@ include __DIR__ . '/../view/header.php';
 
 <!-- Video -->
 <section class="iphone17pro-hero">
-    <video autoplay muted playsinline class="iphone-video">
-        <source src="/assets/vid/iphone17pro.mp4" type="video/mp4">
+    <video id="scrollVideo" preload="auto" muted playsinline class="iphone-video" width="100%">
+        <source src="assets/vid/iphone17pro.mp4" type="video/mp4">
     </video>
-<!-- Iphone details -->
+</section>
+ <!-- Iphone details -->
     <!-- <img src="/assets/img/iphone17procolors.png" alt="iPhone 17 Details" class="hero-media">
 </section> -->
 
@@ -30,7 +32,7 @@ include __DIR__ . '/../view/header.php';
 
 <!-- PRODUCTS SECTION BELOW VIDEO -->
 <section class="product-section">
-    <h2>Iphone 17</h2>
+    <h2>iPhone 17</h2>
 
     <div class="product-grid">
         <?php if (empty($products)): ?>
@@ -58,6 +60,44 @@ include __DIR__ . '/../view/header.php';
         <?php endif; ?>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('scrollVideo');
+    
+    if (!video) {
+        console.error("Video element with ID 'scrollVideo' not found.");
+        return;
+    }
+
+    // Force essential attributes for autoplay via JS
+    video.muted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+
+    const handlePlay = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Browsers require a 'Promise' check for .play()
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Autoplay was prevented. User must interact first.", error);
+                    });
+                }
+            } else {
+                video.pause();
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(handlePlay, { 
+        threshold: 0.3 // Trigger when 30% visible
+    });
+
+    observer.observe(video);
+});
+</script>
 
 <?php
 include __DIR__ . '/../view/footer.php';

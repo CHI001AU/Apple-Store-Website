@@ -30,10 +30,10 @@ switch ($page) {
         $controller->displayAccessories();
         break;
 
-    case 'macbook':
-    require_once __DIR__ . '/controller/MacbookController.php';
-    $controller = new MacbookController();
-    $controller->displayMacbooks();
+    case 'macbookneo':
+    require_once __DIR__ . '/controller/MacbookNeoController.php';
+    $controller = new MacbookNeoController();
+    $controller->displayMacbookneo();
     break;
 
     case 'applewatchse':
@@ -52,6 +52,12 @@ switch ($page) {
     require_once __DIR__ . '/controller/Iphone17proController.php';
     $controller = new Iphone17proController();
     $controller->displayIphone17pro();
+    break;
+
+    case 'applewatch11':
+    require_once __DIR__ . '/controller/applewatch11Controller.php';
+    $controller = new Applewatch11Controller();
+    $controller->displayApplewatch11();
     break;
 
 
