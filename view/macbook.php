@@ -1,15 +1,14 @@
 <?php
 // view/iphone.php
-// Expects $products from ApplewatchController
+// Expects $products from IphoneController
 include __DIR__ . '/../view/header.php';
 ?>
 
-<h1>Apple Watch</h1>
-<h3>Browse our Apple watch collection</h3>
-
+<h1>Macbooks</h1>
+<h3>Browse our latest Macbooks</h3>
 <!-- PRODUCTS SECTION -->
 <section class="product-section">
-    <h2>Apple Watch</h2>
+    <h2>Macbook</h2>
 
     <div class="product-grid">
         <?php if (empty($products)): ?>

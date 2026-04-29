@@ -7,50 +7,95 @@ include __DIR__ . '/../view/header.php';
 <h1>iPhones</h1>
 <h3>Browse our Apple iPhone collection</h3>
 
-<section class="product-grid">
+<!-- PRODUCTS SECTION -->
+<section class="product-section">
+    <h2></h2>
 
-<?php if (empty($products)): ?>
-    <p>No iPhones available.</p>
+    <div class="product-grid">
+        <?php if (empty($products)): ?>
+            <p>No Iphone 17 available</p>
+        <?php else: ?>
+            <?php foreach ($products as $product): ?>
+                <article class="product-card"
+                    data-name="<?= htmlspecialchars($product->productName); ?>"
+                    data-price="$<?= number_format($product->getPrice(), 2); ?>"
+                    data-image="/assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
+                    data-desc="<?= htmlspecialchars($product->productDescription); ?>">
 
-<?php else: ?>
-    <?php foreach ($products as $product): ?>
+                    <img src="/assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
+                        alt="<?= htmlspecialchars($product->productName); ?>"
+                        class="product-poster">
 
-        <article class="product-card">
+                    <div class="product-body">
+                        <h3 class="product-title">
+                            <?= htmlspecialchars($product->productName); ?>
+                        </h3>
 
-            <img src="/assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
-                 alt="<?= htmlspecialchars($product->productName); ?>"
-                 class="product-poster">
+                        <p class="product-desc">
+                            <?= htmlspecialchars($product->productDescription); ?>
+                        </p>
 
-            <div class="product-body">
+                        <span class="product-price">
+                            $<?= number_format($product->getPrice(), 2); ?>
+                        </span>
+                    </div>
 
-                <h2 class="product-title">
-                    <?= htmlspecialchars($product->productName); ?>
-                </h2>
+                </article>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</section>
 
-                <p class="product-desc">
-                    <?= htmlspecialchars($product->productDescription); ?>
-                </p>
+<!-- POPUP MODAL -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
 
-                <div class="product-meta">
+        <span class="close">&times;</span>
 
-                    <span class="product-price">
-                        Price: $<?= number_format($product->getPrice(), 2); ?>
-                    </span>
+        <div class="modal-layout">
 
-                    <span class="product-id">
-                        Stock: <?= (int)$product->getStockLevels(); ?>
-                    </span>
-
-                </div>
-
+            <div class="modal-left">
+                <img id="modalImage" src="" alt="" class="modal-img">
             </div>
 
-        </article>
+            <div class="modal-right">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDesc"></p>
+                <span id="modalPrice"></span>
+                <button class="buy-btn">Buy Now</button>
+            </div>
 
-    <?php endforeach; ?>
-<?php endif; ?>
+        </div>
+    </div>
+</div>
 
-</section>
+<!-- JS -->
+<script>
+const modal = document.getElementById("productModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+const modalPrice = document.getElementById("modalPrice");
+const modalImage = document.getElementById("modalImage");
+const closeBtn = document.querySelector(".close");
+
+document.querySelectorAll(".product-card").forEach(card => {
+    card.addEventListener("click", () => {
+
+        modalTitle.textContent = card.dataset.name;
+        modalDesc.textContent = card.dataset.desc; 
+        modalPrice.textContent = card.dataset.price;
+        modalImage.src = card.dataset.image;
+
+        modal.style.display = "flex";
+    });
+});
+
+closeBtn.onclick = () => modal.style.display = "none";
+
+window.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+};
+</script>
 
 <?php
 include __DIR__ . '/../view/footer.php';

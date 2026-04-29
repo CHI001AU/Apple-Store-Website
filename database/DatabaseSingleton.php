@@ -13,11 +13,15 @@ class DatabaseSingleton {
      */
     private function __construct() {
         // [Inference] You would replace these placeholders with your actual credentials
+        // LOCAL
         $host = 'localhost';
         $db = 'chi001db';
         $user = 'chi001';
         $pass = 'chi001';
         $charset = 'utf8mb4';
+        
+        //TESTING
+        // $host = 'spx-webtest-s01.stpiusx.local';
 
         $dsn = "mysql:host={$host};dbname={$db};charset={$charset}";
 

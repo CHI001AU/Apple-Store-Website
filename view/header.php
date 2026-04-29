@@ -36,22 +36,22 @@
                 <ul class="nav-list">
                     <li><a href="index.php?page=home"             class="nav-link active">Home</a></li>
                         <div class="dropdown">
-                        <button class="dropbtn">Iphone</button>
+                        <a href="index.php?page=iphones" class="dropbtn">Iphone</a>
                         <div class="dropdown-content">
                             <a href="index.php?page=iphone17">Iphone 17</a>    
                             <a href="index.php?page=iphone17pro">Iphone 17 Pro</a>
                         </div>
                     </div>
                         <div class="dropdown">
-                        <button class="dropbtn">Apple Watch</button>
+                        <a href="index.php?page=applewatch" class="dropbtn">Apple Watch</a>
                         <div class="dropdown-content">
                             <a href="index.php?page=applewatchse">Se 3</a>
                             <a href="index.php?page=applewatch11">Series 11</a>
-                            <a href="index.php?page=applewatchse">Ultra 3</a>
+                            <a href="index.php?page=applewatchultra3">Ultra 3</a>
                         </div>  
                     </div>
                        <div class="dropdown">
-                        <button class="dropbtn">Macbook</button>
+                        <a href="index.php?page=macbooks" class="dropbtn">Macbook</a>
                         <div class="dropdown-content">
                             <a href="index.php?page=macbookneo">Macbook Neo</a>
                             <a href="index.php?page=macbookair">Macbook Air</a>

@@ -35,7 +35,7 @@ switch ($page) {
     $controller = new MacbookNeoController();
     $controller->displayMacbookneo();
     break;
-
+        
     case 'applewatchse':
     require_once __DIR__ . '/controller/ApplewatchseController.php';
     $controller = new AppleWatchSeController();
@@ -58,6 +58,18 @@ switch ($page) {
     require_once __DIR__ . '/controller/applewatch11Controller.php';
     $controller = new Applewatch11Controller();
     $controller->displayApplewatch11();
+    break;
+
+    case 'applewatchultra3':
+    require_once __DIR__ . '/controller/applewatchultra3Controller.php';
+    $controller = new ApplewatchUltra3Controller();
+    $controller->displayApplewatchUltra3();
+    break;
+
+    case 'macbooks':
+    require_once __DIR__ . '/controller/MacbookController.php';
+    $controller = new MacbookController();
+    $controller->displayMacbooks();
     break;
 
 
