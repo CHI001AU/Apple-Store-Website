@@ -7,7 +7,7 @@
 @font-face {
     font-family: 'SF Pro';
     /* Choose any name you like */
-    src: url('assets/fonts/SF-Pro-Display-Regular.ttf') format('truetype');
+    src: url('/assets/fonts/SF-Pro-Display-Regular.ttf') format('truetype');
     /* Path relative to the CSS file */
     font-weight: normal;
     /* Define the weight for this specific file */
@@ -20,7 +20,7 @@
 @font-face {
     font-family: 'SF Pro SemiBold';
     /* Choose any name you like */
-    src: url('assets/fonts/SF-Pro-Display-Semibold.ttf') format('truetype');
+    src: url('/assets/fonts/SF-Pro-Display-Semibold.ttf') format('truetype');
     /* Path relative to the CSS file */
     font-weight: 600;
     /* Define the weight for this specific file */
@@ -224,7 +224,7 @@ body {
 
 .product-image {
     width: 100%;
-    height: 400px;
+    height: 280px;
     object-fit: cover;
     border-bottom: 1px solid #ddd;
     background-color: #ddd;
@@ -469,12 +469,9 @@ sessions2 {
     position: relative;
     width: 100%;
     height: 400px;
-    /* adjust as needed */
     overflow: hidden;
     border-radius: 20px;
-    /* rounded corners */
     overflow: hidden;
-    /* keeps video inside the rounded edges */
 }
 
 .hero-video {
@@ -537,9 +534,10 @@ sessions2 {
 
 /* PRODUCTS SECTION */
 .product-section {
-    padding: 60px 10%;
+    padding: 100px 5%;
     background: #ffffff;
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .product-section h2 {
@@ -551,8 +549,8 @@ sessions2 {
 /* PRODUCT GRID */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px;
 }
 
 .product-card {
@@ -593,7 +591,7 @@ sessions2 {
     border-radius: 10px;
     overflow: hidden;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 /* ================================
@@ -868,7 +866,6 @@ sessions2 {
 
 .hero-ultra3 {
     position: relative;
-    /* REQUIRED */
     width: 100%;
     height: 385px;
     margin: 40px auto;
@@ -936,6 +933,45 @@ sessions2 {
     display: block;
     margin-top: 10px;
     font-weight: bold;
+}
+
+.product-stock {
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.stock-red {
+    color: red;
+}
+
+.stock-orange {
+    color: orange;
+}
+
+/* Macbook Air */
+.hero-media-air {
+    width: 90%;
+    height: 50%;
+    display: flex;
+    position: relative;
+    padding: 5px;
+    margin: auto;
+}
+
+.hero-pro {
+    position: relative;
+    width: 100%;
+    height: 560px;
+    overflow: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.hero-video-pro {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* ================================

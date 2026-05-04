@@ -15,6 +15,7 @@ include __DIR__ . '/../view/header.php';
             <p>No Iphone 17 available</p>
         <?php else: ?>
             <?php foreach ($products as $product): ?>
+                <?php $stock = (int)$product->getStockLevels(); ?>
                 <article class="product-card"
                     data-name="<?= htmlspecialchars($product->productName); ?>"
                     data-price="$<?= number_format($product->getPrice(), 2); ?>"
@@ -37,6 +38,18 @@ include __DIR__ . '/../view/header.php';
                         <span class="product-price">
                             $<?= number_format($product->getPrice(), 2); ?>
                         </span>
+
+                        <p class="product-stock <?=
+                            $stock < 10 ? 'stock-red' :
+                            ($stock < 25 ? 'stock-orange' : '');
+                        ?>">
+                            <?php if ($stock <= 0): ?>
+                                OUT OF STOCK
+                            <?php elseif ($stock < 25): ?>
+                                LOW STOCK: <?= $stock; ?>
+                            <?php else: ?>
+                                Stock: <?= $stock; ?>
+                            <?php endif; ?>
                     </div>
 
                 </article>
@@ -61,6 +74,7 @@ include __DIR__ . '/../view/header.php';
                 <h2 id="modalTitle"></h2>
                 <p id="modalDesc"></p>
                 <span id="modalPrice"></span>
+                <p id="modalStock"></p>
                 <button class="buy-btn">Buy Now</button>
             </div>
 

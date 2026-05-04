@@ -22,7 +22,9 @@
     </div> -->
     <!-- Banner -->
 <div class="banner">
-    <img src="assets/img/apple-logo.png" class="banner-title" alt="Banner Image">
+    <a href="index.php?page=home">
+        <img src="assets/img/apple-logo.png" class="banner-title" alt="Banner Image">
+    </a>
 </div>
 
     <!-- Site Header -->

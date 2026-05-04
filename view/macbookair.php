@@ -2,26 +2,20 @@
 // view/iphone.php
 include __DIR__ . '/../view/header.php';
 ?>
- 
- 
-<!-- apple watch video -->
-<section class="hero">
-    <video autoplay muted playsinline class="hero-video">
-        <source src="/assets/vid/applewatchse3.mp4" type="video/mp4">
+
+<!-- <section class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="/assets/vid/macbook-air.mp4" type="video/mp4">
         Your browser does not support the video tag.
-    </video>
+    </video> -->
+
+
+<!-- Welcome image -->
+ <section class="hero-media-air" >
+    <img src="assets/img/macbookairwelcome.png" alt="Macbook Air details" class="hero-media-air"> 
 </section>
 
-<!-- Text -->
-
-<!-- <section 
-<div class="fade in section">
-    <p> Scroll down to see affect </p>
-    </div> -->
-
-   
-
-<!-- PRODUCTS SECTION BELOW VIDEO -->
+<!-- PRODUCTS SECTION -->
 <section class="product-section">
     <div class="product-grid">
         <?php if (empty($products)): ?>
@@ -58,14 +52,13 @@ include __DIR__ . '/../view/header.php';
                             $stock < 10 ? 'stock-red' :
                             ($stock < 25 ? 'stock-orange' : '');
                         ?>">
-                            STOCK: <?= $stock; ?>
-                        </p>
-
-                        <?php if ($stock <= 0): ?>
-                            <p class="stock-warning">OUT OF STOCK</p>
-                        <?php elseif ($stock <= 3): ?>
-                            <p class="stock-warning low-stock">LOW STOCK</p>
-                        <?php endif; ?>
+                            <?php if ($stock <= 0): ?>
+                                OUT OF STOCK
+                            <?php elseif ($stock < 25): ?>
+                                LOW STOCK: <?= $stock; ?>
+                            <?php else: ?>
+                                Stock: <?= $stock; ?>
+                            <?php endif; ?>
                     </div>
 
                 </article>
@@ -90,7 +83,7 @@ include __DIR__ . '/../view/header.php';
                 <h2 id="modalTitle"></h2>
                 <p id="modalDesc"></p>
                 <span id="modalPrice"></span>
-                <p id="modalStock" class="product-stock"></p>
+                <p id="modalStock"></p>
                 <button class="buy-btn">Buy Now</button>
             </div>
 
@@ -117,20 +110,12 @@ document.querySelectorAll(".product-card").forEach(card => {
             modalDesc.textContent = card.dataset.desc; 
             modalPrice.textContent = card.dataset.price;
             modalImage.src = card.dataset.image;
-            modalStock.classList.remove("stock-red", "stock-orange");
-            if (stock <= 0) {
-                modalStock.textContent = "OUT OF STOCK";
-
-            } else if (stock < 10) {
-                modalStock.textContent = "LOW STOCK: " + stock;
+            modalStock.textContent = "Stock: " + stock;
+            modalStock.classList.remove("stock-red", "stock-orange")
+            if (stock < 10) {
                 modalStock.classList.add("stock-red");
-
             } else if (stock < 25) {
-                modalStock.textContent = "LOW STOCK: " + stock;
                 modalStock.classList.add("stock-orange");
-
-            } else {
-                modalStock.textContent = "Stock: " + stock;
             }
 
             modal.style.display = "flex";

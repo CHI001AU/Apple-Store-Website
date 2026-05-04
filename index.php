@@ -72,6 +72,19 @@ switch ($page) {
     $controller->displayMacbooks();
     break;
 
+    case 'macbookair':
+    require_once __DIR__ . '/controller/MacbookAirController.php';
+    $controller = new MacbookAirController();
+    $controller->displayMacbookAir();
+    break;
+
+    case 'macbookpro':
+    require_once __DIR__ . '/controller/MacbookProController.php';
+    $controller = new MacbookProController();
+    $controller->displayMacbookPro();
+    break;
+
+
 
     default:
         http_response_code(404);
