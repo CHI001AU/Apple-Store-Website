@@ -61,7 +61,27 @@
                         </div>  
                     </div>     
                     <li><a href="index.php?page=accessories"     class="nav-link active">Accessories</a></li>
-                     
+                <?php 
+                IF (isset($_SESSION["user"])) {
+                ?>
+                    <li><a href="index.php?page=login&action=logout" class="nav-link active">Logout</a></li>
+                    <li><a href="index.php?page=registration&action=register" class="nav-link active">User Maintenance
+                    <?php
+                    $user=unserialize($_SESSION["user"]); 
+                    echo(" (");
+                    echo($user->getUsername())."-";
+                    echo($user->getFirstName())." ";
+                    echo($user->getLastName());
+                    echo(")");
+                } else {
+                ?>
+                    <li><a href="index.php?page=login&action=login" class="nav-link active">Login</a></li>
+                    <li><a href="index.php?page=registration&action=register" class="nav-link active">Register
+                <?php
+                    echo("(Not logged in)");
+                } 
+                ?>    
+                     </a></li>
                 </ul>
             </nav>
         </div>

@@ -32,7 +32,6 @@ include __DIR__ . '/../view/header.php';
 
 <!-- PRODUCTS SECTION BELOW VIDEO -->
 <section class="product-section">
-    <h2>Featured Products</h2>
     <div class="product-grid">
         <?php if (empty($products)): ?>
             <p>No Iphone 17 available</p>
@@ -64,17 +63,18 @@ include __DIR__ . '/../view/header.php';
                             $<?= number_format($product->getPrice(), 2); ?>
                         </span>
 
-                        <p class="product-stock <?=
+                       <p class="product-stock <?=
                             $stock < 10 ? 'stock-red' :
                             ($stock < 25 ? 'stock-orange' : '');
                         ?>">
-                            <?php if ($stock <= 0): ?>
-                                OUT OF STOCK
-                            <?php elseif ($stock < 25): ?>
-                                LOW STOCK: <?= $stock; ?>
-                            <?php else: ?>
-                                Stock: <?= $stock; ?>
-                            <?php endif; ?>
+                            STOCK: <?= $stock; ?>
+                        </p>
+
+                        <?php if ($stock <= 0): ?>
+                            <p class="stock-warning">OUT OF STOCK</p>
+                        <?php elseif ($stock <= 3): ?>
+                            <p class="stock-warning low-stock">LOW STOCK</p>
+                        <?php endif; ?>
                     </div>
 
                 </article>
@@ -141,6 +141,7 @@ document.querySelectorAll(".product-card").forEach(card => {
             } else {
                 modalStock.textContent = "Stock: " + stock;
             }
+
             modal.style.display = "flex";
         });
     }

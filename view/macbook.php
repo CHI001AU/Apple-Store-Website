@@ -8,19 +8,19 @@ include __DIR__ . '/../view/header.php';
 <h3>Browse our latest Macbooks</h3>
 <!-- PRODUCTS SECTION -->
 <section class="product-section">
-    <h2>Macbook</h2>
-
     <div class="product-grid">
         <?php if (empty($products)): ?>
             <p>No Iphone 17 available</p>
         <?php else: ?>
             <?php foreach ($products as $product): ?>
                 <?php $stock = (int)$product->getStockLevels(); ?>
-                <article class="product-card"
+
+                <article class="product-card <?= $stock <= 0 ? 'out-of-stock' : ''; ?>"
                     data-name="<?= htmlspecialchars($product->productName); ?>"
                     data-price="$<?= number_format($product->getPrice(), 2); ?>"
                     data-image="/assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
-                    data-desc="<?= htmlspecialchars($product->productDescription); ?>">
+                    data-desc="<?= htmlspecialchars($product->productDescription); ?>"
+                    data-stock="<?= $stock; ?>">
 
                     <img src="/assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
                         alt="<?= htmlspecialchars($product->productName); ?>"
@@ -39,17 +39,18 @@ include __DIR__ . '/../view/header.php';
                             $<?= number_format($product->getPrice(), 2); ?>
                         </span>
 
-                        <p class="product-stock <?=
+                       <p class="product-stock <?=
                             $stock < 10 ? 'stock-red' :
                             ($stock < 25 ? 'stock-orange' : '');
                         ?>">
-                            <?php if ($stock <= 0): ?>
-                                OUT OF STOCK
-                            <?php elseif ($stock < 25): ?>
-                                LOW STOCK: <?= $stock; ?>
-                            <?php else: ?>
-                                Stock: <?= $stock; ?>
-                            <?php endif; ?>
+                            STOCK: <?= $stock; ?>
+                        </p>
+
+                        <?php if ($stock <= 0): ?>
+                            <p class="stock-warning">OUT OF STOCK</p>
+                        <?php elseif ($stock <= 3): ?>
+                            <p class="stock-warning low-stock">LOW STOCK</p>
+                        <?php endif; ?>
                     </div>
 
                 </article>
@@ -74,7 +75,7 @@ include __DIR__ . '/../view/header.php';
                 <h2 id="modalTitle"></h2>
                 <p id="modalDesc"></p>
                 <span id="modalPrice"></span>
-                <p id="modalStock"></p>
+                <p id="modalStock" class="product-stock"></p>
                 <button class="buy-btn">Buy Now</button>
             </div>
 
@@ -89,18 +90,37 @@ const modalTitle = document.getElementById("modalTitle");
 const modalDesc = document.getElementById("modalDesc");
 const modalPrice = document.getElementById("modalPrice");
 const modalImage = document.getElementById("modalImage");
+const modalStock = document.getElementById("modalStock");
 const closeBtn = document.querySelector(".close");
 
 document.querySelectorAll(".product-card").forEach(card => {
-    card.addEventListener("click", () => {
+    const stock = parseInt(card.dataset.stock);
 
-        modalTitle.textContent = card.dataset.name;
-        modalDesc.textContent = card.dataset.desc; 
-        modalPrice.textContent = card.dataset.price;
-        modalImage.src = card.dataset.image;
+    if (stock > 0) {
+        card.addEventListener("click", () => {
+            modalTitle.textContent = card.dataset.name;
+            modalDesc.textContent = card.dataset.desc; 
+            modalPrice.textContent = card.dataset.price;
+            modalImage.src = card.dataset.image;
+            modalStock.classList.remove("stock-red", "stock-orange");
+            if (stock <= 0) {
+                modalStock.textContent = "OUT OF STOCK";
 
-        modal.style.display = "flex";
-    });
+            } else if (stock < 10) {
+                modalStock.textContent = "LOW STOCK: " + stock;
+                modalStock.classList.add("stock-red");
+
+            } else if (stock < 25) {
+                modalStock.textContent = "LOW STOCK: " + stock;
+                modalStock.classList.add("stock-orange");
+
+            } else {
+                modalStock.textContent = "Stock: " + stock;
+            }
+
+            modal.style.display = "flex";
+        });
+    }
 });
 
 closeBtn.onclick = () => modal.style.display = "none";
