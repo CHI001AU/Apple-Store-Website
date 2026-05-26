@@ -153,10 +153,8 @@ $isLoggedIn = $user instanceof User;
     <!-- ================= ACCOUNT ================= -->
     <?php if ($isLoggedIn): ?>
 
-        <hr>
 
-        
-
+    
         <form method="POST" action="index.php?page=registration&action=update" class="user-form">
 
             <fieldset class="form-section">
@@ -191,9 +189,18 @@ $isLoggedIn = $user instanceof User;
 
                 <!-- Password -->
                 <div class="form-group">
-                    <label>New Password:</label>
-                    <input type="password" name="password">
-                    <small>Leave blank to keep current password</small>
+                    <label for="password">New Password:</label>
+
+                    <input type="password"
+                        name="password"
+                        id="password"
+                        class="<?= !empty($errors['password']) ? 'input-error' : '' ?>">
+
+                    <?php if (!empty($errors['password'])): ?>
+                        <p class="form-error"><?= htmlspecialchars($errors['password']) ?></p>
+                    <?php else: ?>
+                        <small>Leave blank to keep current password</small>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Street -->

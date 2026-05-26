@@ -1017,7 +1017,7 @@ sessions2 {
 .page-title {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #5d4037;
+    color: #000000;
     margin-bottom: 20px;
 }
 
@@ -1052,7 +1052,7 @@ sessions2 {
 .section-title {
     font-size: 1rem;
     font-weight: 600;
-    color: #8b4513;
+    color: #000000;
     margin-bottom: 16px;
     display: block;
 }
@@ -1102,14 +1102,25 @@ sessions2 {
 }
 
 .btn-primary {
-    background: #8b4513;
+    background: #000000;
     color: #ffffff;
 }
 
 .btn-primary:hover {
-    background: #5d4037;
+    background: #676767;
 }
 
+
+.input-error {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+}
+
+.form-error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
 
 /* ================================
    End of Teddy Bear CSS

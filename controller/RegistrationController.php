@@ -49,7 +49,7 @@ class RegistrationController {
 
     private function showRegisterForm(array $errors = [], array $formData = [])
     {
-        $user = $this->currentUser; // ✅ pass user to view
+        $user = $this->currentUser; // pass user to view
         require __DIR__ . '/../view/registration.php';
     }
 
@@ -75,6 +75,10 @@ class RegistrationController {
 
         if ($password === '') {
             $errors['password'] = 'Password is required.';
+        }
+        // limit password length (match your DB size, e.g. 20)
+        if (strlen($password) > 20) {
+            $errors['password'] = 'Password is too long. Max 20 characters.';
         }
 
         if ($firstName === '') {
@@ -119,7 +123,7 @@ class RegistrationController {
             $_SESSION['user'] = serialize($user);
             $_SESSION['LastActivity'] = time();
 
-            header("Location: index.php?page=registration");
+            header("Location: index.php?page=home");
             exit;
         }
 
@@ -138,6 +142,8 @@ class RegistrationController {
         }
 
         $user = $this->currentUser;
+
+        $errors = [];
 
         $username = trim($_POST['username'] ?? '');
         $firstName = trim($_POST['firstName'] ?? '');
@@ -170,10 +176,28 @@ class RegistrationController {
             $user->setLastName($lastName);
         }
 
-        // password update
+        // validate password ONLY if entered
         if ($password !== '') {
-            $user->setPassword($password);
+            if (strlen($password) > 20) {
+                $errors['password'] = 'Password is too long. Max 20 characters.';
+            }
+
+            if (strlen($password) < 6) {
+                $errors['password'] = 'Password must be at least 6 characters.';
+            }
+
+            // set password ONLY if valid
+            if ($password !== '' && empty($errors['password'])) {
+                $user->setPassword($password);
+            }
         }
+
+        //  if errors → show page again
+        if (!empty($errors)) {
+            $this->showRegisterForm($errors, $_POST);
+            return;
+        }
+
         // address + contact updates
         if ($street !== '') {
             $user->setStreet($street);
@@ -207,7 +231,7 @@ class RegistrationController {
 
         $_SESSION['user'] = serialize($user);
 
-        header("Location: index.php?page=home");
+        header("Location: index.php");
         exit;
     }
 

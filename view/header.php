@@ -65,7 +65,7 @@
                 IF (isset($_SESSION["user"])) {
                 ?>
                     <li><a href="index.php?page=login&action=logout" class="nav-link active">Logout</a></li>
-                    <li><a href="index.php?page=registration&action=register" class="nav-link active">User Maintenance
+                    <li><a href="index.php?page=registration&action=register" class="nav-link active">My account
                     <?php
                     $user=unserialize($_SESSION["user"]); 
                     echo(" (");
