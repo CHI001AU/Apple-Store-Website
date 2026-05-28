@@ -88,6 +88,9 @@ $isLoggedIn = $user instanceof User;
                     id="street"
                     value="<?= htmlspecialchars($formData['street'] ?? '') ?>"
                     required>
+                <?php if (!empty($errors['street'])): ?>
+                    <p class="form-error"><?= htmlspecialchars($errors['street']) ?></p>
+                <?php endif; ?>
             </div>
 
             <!-- Town -->
@@ -98,6 +101,9 @@ $isLoggedIn = $user instanceof User;
                     id="town"
                     value="<?= htmlspecialchars($formData['town'] ?? '') ?>"
                     required>
+                <?php if (!empty($errors['town'])): ?>
+                    <p class="form-error"><?= htmlspecialchars($errors['town']) ?></p>
+                <?php endif; ?>
             </div>
 
             <!-- State -->
@@ -108,6 +114,9 @@ $isLoggedIn = $user instanceof User;
                     id="state"
                     value="<?= htmlspecialchars($formData['state'] ?? '') ?>"
                     required>
+                <?php if (!empty($errors['state'])): ?>
+                    <p class="form-error"><?= htmlspecialchars($errors['state']) ?></p>
+                <?php endif; ?>
             </div>
 
             <!-- Postcode -->
@@ -118,6 +127,9 @@ $isLoggedIn = $user instanceof User;
                     id="postcode"
                     value="<?= htmlspecialchars($formData['postcode'] ?? '') ?>"
                     required>
+                <?php if (!empty($errors['postcode'])): ?>
+                    <p class="form-error"><?= htmlspecialchars($errors['postcode']) ?></p>
+                <?php endif; ?>
             </div>
 
             <!-- Phone -->
@@ -127,6 +139,11 @@ $isLoggedIn = $user instanceof User;
                 htmlspecialchars($formData['phone'] ?? ($user ? $user->getPhone
                 () : '')) ?>" placeholder="04xx xxx xxx or (0x) xxxx xxxx"
                 pattern="^(\+61|0)[2-478](?:[ -]?[0-9]){8}$" required>
+
+                <?php if (!empty($errors['phone'])): ?>
+                    <p class="form-error"><?= htmlspecialchars($errors['phone']) ?></p>
+                <?php endif; ?>
+            
             </div>
 
             <!-- Email -->
@@ -137,6 +154,9 @@ $isLoggedIn = $user instanceof User;
                     id="email"
                     value="<?= htmlspecialchars($formData['email'] ?? '') ?>"
                     required>
+                <?php if (!empty($errors['email'])): ?>
+                    <p class="form-error"><?= htmlspecialchars($errors['email']) ?></p>
+                <?php endif; ?>
             </div>
 
         </fieldset>

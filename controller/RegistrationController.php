@@ -76,7 +76,7 @@ class RegistrationController {
         if ($password === '') {
             $errors['password'] = 'Password is required.';
         }
-        // limit password length (match your DB size, e.g. 20)
+        // limit password length 
         if (strlen($password) > 20) {
             $errors['password'] = 'Password is too long. Max 20 characters.';
         }
@@ -91,6 +91,58 @@ class RegistrationController {
 
         if ($username !== '' && $this->userRepository->existsByUsername($username)) {
             $errors['username'] = 'That username already exists.';
+        }
+
+        // ================= LENGTH VALIDATION =================
+
+        // username (VARCHAR 20)
+        if (strlen($username) > 20) {
+            $errors['username'] = 'Username too long. Max 20 characters.';
+        }
+
+        // password (VARCHAR 20)
+        if (strlen($password) > 20) {
+            $errors['password'] = 'Password too long. Max 20 characters.';
+        }
+
+        // firstName (VARCHAR 50)
+        if (strlen($firstName) > 50) {
+            $errors['firstName'] = 'First name too long. Max 50 characters.';
+        }
+
+        // lastName (VARCHAR 50)
+        if (strlen($lastName) > 50) {
+            $errors['lastName'] = 'Last name too long. Max 50 characters.';
+        }
+
+        // street (VARCHAR 100)
+        if (strlen($street) > 100) {
+            $errors['street'] = 'Street too long. Max 100 characters.';
+        }
+
+        // town (VARCHAR 100)
+        if (strlen($town) > 100) {
+            $errors['town'] = 'Town too long. Max 100 characters.';
+        }
+
+        // state (VARCHAR 10)
+        if (strlen($state) > 10) {
+            $errors['state'] = 'State too long. Max 10 characters.';
+        }
+
+        // postcode (VARCHAR 4)
+        if (strlen($postcode) > 4) {
+            $errors['postcode'] = 'Postcode too long. Max 4 characters.';
+        }
+
+        // phone (VARCHAR 12)
+        if (strlen($phone) > 12) {
+            $errors['phone'] = 'Phone too long. Max 12 characters.';
+        }
+
+        // email (VARCHAR 30)
+        if (strlen($email) > 30) {
+            $errors['email'] = 'Email too long. Max 30 characters.';
         }
 
         $formData = [
