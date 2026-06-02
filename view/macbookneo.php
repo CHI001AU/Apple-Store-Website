@@ -5,13 +5,13 @@ include __DIR__ . '/../view/header.php';
 
 <section class="hero">
     <video autoplay muted loop playsinline class="hero-video">
-        <source src="/assets/vid/macbook-neo.mp4" type="video/mp4">
+        <source src="assets/vid/macbook-neo.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <div class="hero-text">
         <h1></h1>
-        <img src="/assets/img/helloneo.png" alt="MacBook Neo" class="hero-logo">
+        <img src="assets/img/helloneo.png" alt="MacBook Neo" class="hero-logo">
     </div>
 </section>
 
@@ -27,11 +27,11 @@ include __DIR__ . '/../view/header.php';
                 <article class="product-card <?= $stock <= 0 ? 'out-of-stock' : ''; ?>"
                     data-name="<?= htmlspecialchars($product->productName); ?>"
                     data-price="$<?= number_format($product->getPrice(), 2); ?>"
-                    data-image="/assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
+                    data-image="assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
                     data-desc="<?= htmlspecialchars($product->productDescription); ?>"
                     data-stock="<?= $stock; ?>">
 
-                    <img src="/assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
+                    <img src="assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
                         alt="<?= htmlspecialchars($product->productName); ?>"
                         class="product-poster">
 

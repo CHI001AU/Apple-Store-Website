@@ -6,7 +6,7 @@ include __DIR__ . '/../view/header.php';
 <!-- apple watch video -->
 <section class="hero-ultra3">
     <video autoplay muted playsinline class="hero-video-ultra3">
-        <source src="/assets/vid/ultra3.mp4" type="video/mp4">
+        <source src="assets/vid/ultra3.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
@@ -33,11 +33,11 @@ include __DIR__ . '/../view/header.php';
                 <article class="product-card <?= $stock <= 0 ? 'out-of-stock' : ''; ?>"
                     data-name="<?= htmlspecialchars($product->productName); ?>"
                     data-price="$<?= number_format($product->getPrice(), 2); ?>"
-                    data-image="/assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
+                    data-image="assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
                     data-desc="<?= htmlspecialchars($product->productDescription); ?>"
                     data-stock="<?= $stock; ?>">
 
-                    <img src="/assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
+                    <img src="assets/img/<?= htmlspecialchars($product->getProductImage()); ?>"
                         alt="<?= htmlspecialchars($product->productName); ?>"
                         class="product-poster">
 

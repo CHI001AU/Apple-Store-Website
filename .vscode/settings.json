@@ -1,0 +1,29 @@
+{
+    "deploy.reloaded": {
+        "packages": [
+            {
+                "name": "website",
+                "description": "Deploy website fies",
+                "files": [
+                    "**/*"
+                ],
+                "exclude": [
+                    ".git/**",
+                    ".vscode/**",
+                    "node_modules/**"
+                ],
+                "targets": [
+                    "Webtest 2 10CTE Website"
+                ]
+            }
+        ],
+        "targets": [
+            {
+                "type": "local",
+                "name": "Webtest 2 10CTE Website",
+                "description": "Webtest 2 : Year 10 CTE website",
+                "dir": "t:\\website2"
+            }
+        ]
+    }
+}
