@@ -4,6 +4,7 @@
 
 require_once __DIR__ . '/../model/User.php';
 require_once __DIR__ . '/../repository/UserRepository.php';
+require_once __DIR__ . '/../service/RegistrationService.php';
 
 class RegistrationController {
 

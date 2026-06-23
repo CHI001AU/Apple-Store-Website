@@ -14,6 +14,23 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- Dumping structure for table chi001db.basketitems
+DROP TABLE IF EXISTS `basketitems`;
+CREATE TABLE IF NOT EXISTS `basketitems` (
+  `basketItemId` int NOT NULL AUTO_INCREMENT,
+  `userId` int DEFAULT NULL,
+  `productId` int DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  `price` decimal(6,2) DEFAULT NULL,
+  PRIMARY KEY (`basketItemId`),
+  KEY `FK__users` (`userId`),
+  KEY `FK_basketitems_products` (`productId`),
+  CONSTRAINT `FK__users` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FK_basketitems_products` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table chi001db.basketitems: ~0 rows (approximately)
+
 -- Dumping structure for table chi001db.categories
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
@@ -31,6 +48,37 @@ INSERT INTO `categories` (`categoryId`, `categoryName`, `categoryDescription`) V
 	(5, 'Iphones', 'Iphones'),
 	(6, 'Apple Watches', 'A Apple device on yout wrist'),
 	(7, 'Macbooks', 'A computer for a user with lots of tasks to do');
+
+-- Dumping structure for table chi001db.orderitems
+DROP TABLE IF EXISTS `orderitems`;
+CREATE TABLE IF NOT EXISTS `orderitems` (
+  `orderItemId` int NOT NULL AUTO_INCREMENT,
+  `orderId` int DEFAULT NULL,
+  `productId` int DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  `price` decimal(6,2) DEFAULT NULL,
+  PRIMARY KEY (`orderItemId`),
+  KEY `FK_orderitems_orders` (`orderId`),
+  KEY `FK_orderitems_products` (`productId`),
+  CONSTRAINT `FK_orderitems_orders` FOREIGN KEY (`orderId`) REFERENCES `orders` (`orderId`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FK_orderitems_products` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table chi001db.orderitems: ~0 rows (approximately)
+
+-- Dumping structure for table chi001db.orders
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `orderId` int NOT NULL AUTO_INCREMENT,
+  `orderDate` date DEFAULT NULL,
+  `orderStatus` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `userId` int DEFAULT NULL,
+  PRIMARY KEY (`orderId`),
+  KEY `FK_orders_users` (`userId`),
+  CONSTRAINT `FK_orders_users` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dumping data for table chi001db.orders: ~0 rows (approximately)
 
 -- Dumping structure for table chi001db.products
 DROP TABLE IF EXISTS `products`;
@@ -82,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table chi001db.users: ~4 rows (approximately)
+-- Dumping data for table chi001db.users: ~5 rows (approximately)
 INSERT INTO `users` (`userId`, `username`, `password`, `firstName`, `lastName`, `street`, `town`, `state`, `postcode`, `phone`, `email`) VALUES
 	(5, 'Admin', 'kgeroghoerghoerhgeo', 'Liam', 'Child', 'willandra 10', 'sydney', 'QLD', '2066', '0494 392 844', 'chi001@stpiusx.nsw.edu.au'),
 	(6, 'Josh-apple', 'Josh', 'Josh', 'Pez', '51 street', 'willoughby', 'NSW', '2068', '0466898406', 'myemail@gmail.com'),

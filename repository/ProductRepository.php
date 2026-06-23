@@ -75,6 +75,7 @@ class ProductRepository {
         $sql = "SELECT
                     productId, productName, productDescription, categoryId, stockLevels, productImage, price
                 FROM products
+                WHERE stockLevels > 0
                 ORDER BY RAND()
                 LIMIT :limit";
 
